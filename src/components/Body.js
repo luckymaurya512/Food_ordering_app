@@ -35,9 +35,9 @@ const Body = () => {
   const handleFilter = () => {
     if (listOfRestaurants) {
       const filteredList = listOfRestaurants.filter(
-        (res) => res.info.avgRating > 4
+        (res) => res.info.avgRating > 4.2
       );
-      setListOfRestaurants(filteredRestaurants);
+      setFilteredRestaurants(filteredList); // Update this line
     }
   };
   // if (listOfRestaurants.length===0) {

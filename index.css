@@ -383,3 +383,13 @@
     font-weight: bold;
   }
   
+  ul li::after {
+    content: none; /* This removes any content added via the ::after pseudo-element */
+}
+
+/* If you want to keep the price styling only for menu items */
+.menu ul li::after {
+    content: '₹ ' attr(data-price);
+    color: #007bff;
+    font-weight: bold;
+}
