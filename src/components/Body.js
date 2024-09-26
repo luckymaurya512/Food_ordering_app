@@ -1,7 +1,8 @@
 import RestaurantCard from "./RestaurantCard";
 // import resList from "../utils/mockData";
 import { useEffect, useState } from "react";
-import Shrimmer from "./Shrimmer";
+import useOnlineStatus  from "./useOnlineStatus";
+import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 
 const Body = () => {
@@ -39,9 +40,12 @@ const Body = () => {
       setListOfRestaurants(filteredRestaurants);
     }
   };
-  if (listOfRestaurants === null) {
-    return <Shrimmer />;
-  }
+  // if (listOfRestaurants.length===0) {
+  //   return <Shimmer />;
+  // }; 
+
+  // const onlineStatus=useOnlineStatus();
+  // if(onlineStatus===false) return <h1>Looks like you're offline</h1>
 
   return (
     <div className="body">

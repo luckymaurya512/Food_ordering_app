@@ -1,210 +1,385 @@
-body {
-  font-family: sans-serif;
-  font-size: 16px;
-  margin: 0;
-  padding: 20px;
-}
-
-.body {
-  background: rgb(255, 255, 255);
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(240, 240, 240, 1) 100%
-  );
-}
-
+/* Header container */
 .header {
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid black;
-  /* display: flex; */
-  /* align-items: center; */
-  justify-content: space-between;
-  background-color: #282c34;
-  padding: 10px 20px;
-  color: white;
-}
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    animation: slide-in 1s ease-out forwards;
+  }
+  
+  /* Logo styling */
+  .logo-container {
+    flex: 1; /* Takes up space on the left */
+  }
+  
+  .logo {
+    height: 80px;
+    width: auto;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Logo animation on hover */
+  .logo:hover {
+    transform: rotate(360deg);
+  }
+  
+  /* Navigation styling */
+  .nav-items {
+    display: flex;
+    justify-content: flex-end; /* Pushes nav items to the right */
+    align-items: center;
+    flex: 1.5; /* Makes sure the nav takes up enough space */
+  }
+  
+  .nav-items ul {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Space between nav items */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-items li {
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .nav-items li a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s;
+  }
+  
+  /* Hover effect on navigation links */
+  .nav-items li:hover a {
+    color: #ff6347; /* Tomato color */
+  }
+  
+  /* Button styling */
+  button.login {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.4s ease, transform 0.3s ease;
+  }
+  
+  /* Button hover effect */
+  button.login:hover {
+    background-color: #ff6347;
+    transform: scale(1.1);
+  }
+  
+  /* Animations */
+  @keyframes slide-in {
+    0% {
+      transform: translateY(-50%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Body container */
+.body {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Filter container */
+  .filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Search box styling */
+  .search-box {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  .search-box:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  /* Search button styling */
+  .search-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .search-btn:hover {
+    background-color: #ff6347;
+    transform: scale(1.05);
+  }
+  
+  /* Top Rated Restaurants button styling */
+  .filter-btn {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .filter-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+  }
+  
+  /* Restaurants container */
+  .res-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  
+  /* Restaurant card styling */
+  .res-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .res-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Restaurant image styling */
+  .res-logo {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  /* Restaurant details */
+  .res-card h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .res-card h4 {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 5px;
+  }
+  
+  @media (max-width: 768px) {
+    .filter {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .search-btn,
+    .filter-btn {
+      width: 100%;
+      margin-top: 10px;
+    }
+  
+    .res-container {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+  }
 
-.logo {
-  width: 120px;
-}
+  /* Menu container styling */
+.menu {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    animation: fade-in 0.5s ease-in-out;
+  }
+  
+  /* Restaurant name */
+  .menu h1 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  /* Cuisines list */
+  .menu h2 {
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: #666;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Menu header */
+  .menu h1:first-of-type {
+    text-align: center;
+    margin-top: 30px;
+    color: #007bff;
+  }
+  
+  /* Menu items list */
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  ul li {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  ul li:hover {
+    background-color: #f0f8ff;
+  }
+  
+  /* Menu item names */
+  ul li span {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Price styling */
+  ul li::after {
+    content: '₹ ' attr(data-price);
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  /* No menu items */
+  ul li:last-child {
+    border-bottom: none;
+    text-align: center;
+    color: #ff6347;
+    font-style: italic;
+  }
+  
+  /* Animation for fade-in effect */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-.nav-items {
-  padding: 0px, 20px;
-}
-
-.nav-items > ul {
-  font-size: 19px;
-  display: flex;
-  list-style-type: none;
-}
-
-.nav-items > ul > li {
-  padding: 10px;
-  margin: 10px;
-  color: white;
-}
-
-.nav-home{
-  color: white;
-  forced-color-adjust: white;
-}
-
+  /* Restaurant Card Styling */
 .res-card {
-  width: 250px;
-  height: 410px;
-  /* border: 1px, solid, black; */
-  padding: 5px;
-  background-color: #f0f0f0;
-  margin: 5px;
-}
-
-.res-card:hover {
-  border: 1px solid black;
-  cursor: pointer;
-}
-
-.search {
-  padding: 10px;
-}
-
-.res-logo {
-  width: 100%;
-  height: 55%;
-}
-
-.res-container {
-  /* display: flex; */
-  /* flex-wrap: wrap; */
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 10px;
-}
-
-.filter-btn {
-  margin-top: 30px;
-  margin-left: 80px;
-  background-color: #333;
-  color: #fff; /* White text */
-  padding: 10px 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  height: 50px;
-}
-
-.filter-btn:hover {
-  background-color: #222;
-}
-
-.login {
-  /* margin:10px; */
-  /* padding:10px; */
-  cursor: pointer;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 15px;
-  font-size: 16px;
-  font-weight: bold;
-  /* cursor: pointer; */
-  transition: background-color 0.3s, transform 0.2s;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.login:hover {
-  background-color: #0056b3;
-}
-
-.login:active {
-  transform: scale(0.95);
-}
-
-.login:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
-}
-
-.filter {
-  margin-bottom: 5px;
-  border-bottom: 1px solid #ddd;
-  display: flex;
-}
-
-.error {
-  background-color: #f0f0f0;
-  color: red;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.res-container .card {
-  border-radius: 50%;
-}
-
-.card {
-  border-radius: 50%;
-}
-
-.shrimmer-container {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.shrimmer-card {
-  margin: 20px;
-  width: 200px;
-  height: 350px;
-  background-color: #f0f0f0;
-}
-
-.search {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 20px 0;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-}
-
-.search-box {
-  width: 300px;
-  padding: 10px;
-  border: 2px solid #007bff;
-  border-radius: 4px;
-  font-size: 16px;
-  transition: border-color 0.3s;
-}
-
-.search-box:focus {
-  outline: none;
-  border-color: #0056b3;
-}
-
-.search-btn {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 15px;
-  margin-left: 10px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s;
-}
-
-.search-btn:hover {
-  background-color: #0056b3;
-}
-
-.search-btn:focus {
-  outline: none;
-}
-link{
-  text-decoration: none;
-}
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  /* Card hover effects */
+  .res-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Restaurant logo styling */
+  .res-logo {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Logo zoom effect on hover */
+  .res-card:hover .res-logo {
+    transform: scale(1.05);
+  }
+  
+  /* Restaurant details */
+  .res-card h3 {
+    font-size: 1.4rem;
+    margin: 10px 0;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .res-card h4 {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: #666;
+  }
+  
+  /* Add some color based on the average rating */
+  .res-card h4:nth-of-type(2) {
+    font-weight: bold;
+    color: #007bff; /* You can change this color */
+  }
+  
+  .res-card h4:nth-of-type(3) {
+    color: #ff9800;
+    font-weight: bold;
+  }
+  
+  /* Delivery time */
+  .res-card h4:nth-of-type(4) {
+    font-size: 0.9rem;
+    color: #ff6347;
+    margin-top: 10px;
+  }
+  
+  /* Optional: add rating badge */
+  .res-card::before {
+    content: attr(data-rating);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff6347;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  

@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { MENU_API } from "../utils/constant";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
   const [resInfo, setResInfo] = useState(null); // Set the initial state to null
   const [menuItems, setMenuItems] = useState([]); // Separate state for menu items
 
   const { resId } = useParams();
+  // const resInfo=useRestaurantMenu(resId);
 
   useEffect(() => {
     fetchMenu();
@@ -15,7 +16,7 @@ const RestaurantMenu = () => {
   const fetchMenu = async () => {
     try {
       const response = await fetch(
-        MENU_API+resId
+        `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.5288745&lng=77.2145355&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`
       );
       const json = await response.json();
       console.log(json); // Log the full response for debugging
@@ -48,8 +49,8 @@ const RestaurantMenu = () => {
       <ul>
         {menuItems.length > 0 ? (
           menuItems.map((menuItem, index) => (
-            <li key={menuItem?.card?.info?.id}>
-              {menuItem?.card?.info?.name || "Item name not available"} - ₹ {menuItem?.card?.info?.price/100 || menuItem?.card?.info?.defaultPrice/100 || "Not available"}
+            <li key={index}>
+              {menuItem?.card?.info?.name || "Item name not available"}
             </li>
           ))
         ) : (
